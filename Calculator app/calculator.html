@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <style>
+    .calculator {
+      max-width: 300px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      background-color: #f9f9f9;
+    }
+    .btn {
+      margin: 4.999999px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="calculator">
+          <input type="text" class="form-control mb-3" id="calcScreen" placeholder="0">
+          <div class="row">
+            <div class="col">
+              <button onclick="displayContent(7)" id="seven" class="btn btn-secondary btn-block">7</button>
+            </div>
+            <div class="col">
+              <button onclick="displayContent('8')" id="eight" class="btn btn-secondary btn-block">8</button>
+            </div>
+            <div class="col">
+              <button onclick="displayContent(9)" id="nine" class="btn btn-secondary btn-block">9</button>
+            </div>
+            <div class="col">
+              <button onclick="displayContent('+')" id="add" class="btn btn-warning btn-block">&#43;</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button onclick="displayContent(4)" id="four" class="btn btn-secondary btn-block">4</button>
+            </div>
+            <div class="col">
+              <button onclick="displayContent(5)" id="five" class="btn btn-secondary btn-block">5</button>
+            </div>
+            <div class="col">
+              <button onclick="displayContent(6)" id="six" class="btn btn-secondary btn-block">6</button>
+            </div>
+            <div class="col">
+              <button onclick="displayContent('-')" id="sub" class="btn btn-warning btn-block">&minus;</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button onclick="displayContent(1)" id="one" class="btn btn-secondary btn-block">1</button>
+            </div>
+            <div class="col">
+              <button onclick="displayContent(2)" id="two" class="btn btn-secondary btn-block">2</button>
+            </div>
+            <div class="col">
+              <button onclick="displayContent(3)" id="three" class="btn btn-secondary btn-block">3</button>
+            </div>
+            <div class="col">
+              <button onclick="displayContent('*')" id="mult" class="btn btn-warning btn-block">&#215;</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button onclick="removeLast()" id="del" class="btn btn-warning btn-block">&#9003;</button>
+            </div>
+            <div class="col">
+              <button onclick="displayContent(0)" id="zero" class="btn btn-secondary btn-block">0</button>
+            </div>
+            <div class="col">
+              <button onclick="showResult()" class="btn btn-primary btn-block">&#61;</button>
+            </div>
+            <div class="col">
+              <button onclick="displayContent('/')" id="div" class="btn btn-warning btn-block">&#247;</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button onclick="clearAll()" class="btn btn-danger">Clear</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="./main.js"></script>
+</html>
