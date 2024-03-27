@@ -1,0 +1,82 @@
+ JAVASCRIPT - Front end Concepts
+ -------------------------------
+
+    - Used to provide behavior to Web page
+    - Ways to applying JS in HTML
+        - Internal JS : use 'script tag' to provide js code in HTML
+        - External JS : link External js file with HTML using script tag
+    - DOM : Document object Model for a web page
+        - A tree structure corresponding to a webpage , there will be a single root/node (html tag) which is made of js object
+        - js can access webpage / HTML elements via DOM using 'document' object
+    - DOM Methods : Selecting HTML elements to js code 
+        - using tag name : document.getElementsByTagName('tag-name')
+        - using class name : document.getElementsByClassName('class-name')
+        - using id : document.getElementsById('id-name')
+        - Using querySelector : document.querySelector('tag/#id/.class-name')
+        - Using querySelectorAll : document.querySelectorAll('tag/#id/.class-name')
+    - Event : triggered by user actions 
+        - Mouse Related Events : click, move, drag ...
+        - Keyboaord Related Events : keypressdown, keyup ....
+        - Text based Events
+    - Access / Update content of a tag
+        - innerHTML 
+        - innerText
+    - Permanent Data storage in Browser
+        - Using Local Storage
+        - Using Session Storage
+        - Methods : Both key and value must be string type
+            - setItem(key,value) : Used to store data in local /Session storage
+            - getItem(key) : Used to get data from local /Session storage
+            - removeItem(key) : Used to delete data from local /Session storage
+    - API : Application Programming Interface - used to communicate Application in internet
+        - URL : Uniform Resource Locator 
+            ex: https://jsonplaceholder.typicode.com/users/1
+            baseURL : https://jsonplaceholder.typicode.com/
+        - URI : Uniform Resource Identifier : ex: users
+        - Path Parameter : ex : 1
+        - Query Parameter : values followed with ?  in url
+            ex: https://in.search.yahoo.com/search?fr=mcafee&type=E211IN1274G0&p=jsplaceholder
+        - Body Parameter : 
+        - Types of API Architectural
+            - REST API : HTTP, JSON 
+            - SOAP API : HTTP, XML
+            - GRAPHL
+    - JSON : JAVASCRIPT Object Notation
+        - {"key" : value}
+    - HTTP (Hyper Text Transfer Protocol)
+        - HTTP Requests
+            - GET (to get a data from server to client)
+            - POST (to store/add data to server from client)
+            - PUT (to edit/update existing data to server from client)
+            - DELETE (to remove a data from server)
+        - HTTP Response Codes : to identify the status of client request by browser
+            - 1xx : Informational
+            - 2xx : Success
+            - 3xx : Redirection
+            - 4xx : Client error
+            - 5xx : Server error
+    - Resolving Function Call  in JS
+        - Synchronus Function : execute function without delay
+        - Asynchrous function : execute function with a delay
+        - JS Use a single Call Stack (Single Threaded Programming Language) to monitor it use event loop
+            - Types of Asynchrous function
+                - Callback hold in callback queue
+                - API call hold in Microtask queue (priority queue)
+            - Resolving Asynchrous functions
+                - if we use callback to resolve Asynchrous function it may lead 'Callback Hell : Nesting of callback function' scenario
+                - Promise : aviod callback hell
+                    - Has 2 states
+                        - Resolved state : use 'then' method to get the Response
+                        - Reject state : use 'catch' method to get the reason to fail the function call
+                        - Pending state : waiting duration to get response for Asynchrous function call
+                    - Async-Await keyword : To resolve promise 
+                        - 'async' keyword is used in to function to indicate its Asynchrous
+                        - use 'await' keyword in-front of async function call, to wait till its completion
+                        - only resolved state will get after await to completes the asyc function call
+                        - to get reject state use try-catch block 
+    - API Call Using JS 
+        - using XMLHTTPRequest : AJAX (Asynchrous JS & XML)
+        - fetch() : returns promise
+
+
+        
