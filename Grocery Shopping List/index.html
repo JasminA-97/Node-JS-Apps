@@ -4,13 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Grocery Shopping List</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
+  <!-- bootstrap script -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
   <!-- Bootstrap CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome for cross icon -->
-  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=Edu+NSW+ACT+Foundation:wght@400..700&family=Protest+Riot&family=Rubik+Doodle+Shadow&family=Rubik+Scribble&display=swap" rel="stylesheet">    
+  
+  <!-- { 
+    font-family: "Rubik Doodle Shadow", system-ui;
+    font-family: "Protest Riot", sans-serif;
+    font-family: "Edu NSW ACT Foundation", cursive;
+    font-family: "Alata", sans-serif;
+    font-family: "Rubik Scribble", system-ui;
+  }  -->
+  
   <style>
     .total-btn {
       display: none;
@@ -18,179 +31,175 @@
   </style>
 </head>
 <body>
- <div class="container">
-  <h1 class="text-center mt-5 pt-3"><span class="text-warning"> Grocery </span>Shopping List</h1>
-<div class="row mt-5">
-      <div class="col-lg-4 border rounded-3">
-          <h3 class="mb-5 mt-3 text-center">Items List</h3>
-          <div class="d-flex align-items-center justify-content-between">
-              <input type="text" id="input" placeholder="Enter item" class="form-control w-75" onkeydown="if (event.key === 'Enter') addItem()">
-              <button onclick="addItem()" class="btn btn-primary ">Add</button>
-          </div>
-          <div class="mt-5" id="grocery">
-              <ul id="output1"></ul>
-          </div>
+  <div class="container">
+    <h1 class="text-center mt-5 pt-3" style=" font-family: Protest Riot, sans-serif;">Easy<span class="text-warning" style="font-family: Rubik Doodle Shadow, system-ui;"> Grocery</span></h1>
+    <h4 class="text-center" style="font-family: Edu NSW ACT Foundation, cursive;">  Have a perfect stocked pantry.</h4>
+    <div class="row mt-5 shadow">
+      <div class="col-lg-4 border rounded-3 shadow p-3">
+        <h4 class="mb-5 mt-3 text-center" style="font-family: Alata, sans-serif;"><i class="fa-solid fa-list float-left"></i><u> Items List</u></h4>
+        <div class="d-flex align-items-center justify-content-between">
+          <input type="text" id="input" placeholder="Enter item" class="form-control w-75" onkeydown="if (event.key === 'Enter') addItem()">
+          <button onclick="addItem()" class="btn btn-primary">Add</button>
+        </div>
+        <div class="mt-5" id="grocery">
+          <ul id="output1"></ul>
+        </div>
       </div>
-  
-      <div class="col-lg-4 border rounded-3">
-        <h3 class="mb-5 mt-3 text-center">Purchased List</h3>
+      
+      <div class="col-lg-4 border rounded-3 shadow p-3">
+        <h4 class="mb-5 mt-3 text-center"style="font-family: Alata, sans-serif;"><i class="fa-solid fa-cart-shopping float-left"></i> <u>Purchased List</u></h4>
         <div class="ms-5 me-5" id="output2"></div>
         <button onclick="calculateTotal()" class="btn btn-success mb-3 me-5 total-btn float-right">Total</button>
-    </div>
-  
-      <div class="col-lg-4 border rounded-3">
-        <h3 class="mb-5 mt-3 text-center">Expense</h3>
+      </div>
+      
+      <div class="col-lg-4 border rounded-3 shadow p-3">
+        <h4 class="mb-5 mt-3 text-center"style="font-family: Alata, sans-serif;"><i class="fa-solid fa-tags float-left"></i> <u>Expense</u></h4>
         <div>
           <div class="mt-5">
             <ul class="m-5" id="output3"></ul>
           </div>
         </div>
       </div>
-</div>
- </div>
-<!-- Font Awesome Script -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
-
-<script>
-  input.focus();
+    </div>
+  </div>
   
-  const addItem = () => {
-    if (input.value) {
-      const listItem = document.createElement('li');
-      const currentDate = new Date().toISOString().split('T')[0]; // Get the current date
-      listItem.style.listStyle = 'none';
-      listItem.className = 'mb-3 d-flex justify-content-between align-items-center';
-      listItem.innerHTML = `
-        <input class="form-check-input" type="checkbox" value="${input.value}" onclick="moveToPurchasedList(this, '${currentDate}')">
-        ${input.value}
-        <div class="input-group input-group-sm ml-2" style="width: 125px;">
-          <input type="number" class="form-control quantity" placeholder="Qty">
-        </div>
-        <button class="btn btn-danger btn-sm ml-2" onclick="removeItem(this)"><i class="fas fa-times"></i></button>`;
-      
-      output1.appendChild(listItem);
-      input.value = "";
-    } else {
-      alert('Enter an item...');
-    }
-  };
-
-  const moveToPurchasedList = (checkbox, date) => {
-    const listItem = checkbox.parentNode;
-    if (checkbox.checked) {
-      const priceInput = document.createElement('input');
-      priceInput.type = 'number';
-      priceInput.className = 'form-control price';
-      priceInput.placeholder = 'Price';
-      listItem.querySelector('.input-group').appendChild(priceInput);
-      listItem.setAttribute('data-date', date); // Store the date as a data attribute
-      output2.appendChild(listItem);
-      listItem.removeChild(listItem.querySelector('button')); // Remove the remove button from the listItem
-      updateTotalButtonVisibility(); // Check if "Total" button should be visible
-    } else {
-      const qtyInput = listItem.querySelector('.input-group .quantity');
-      const priceInput = listItem.querySelector('.input-group .price');
-      if (priceInput) {
-        priceInput.parentNode.removeChild(priceInput);
-      }
-      output1.appendChild(listItem);
-      if (!listItem.querySelector('button')) { // Add the remove button back to the listItem if it's not already there
-        const removeButton = document.createElement('button');
-        removeButton.className = 'btn btn-danger btn-sm ml-2';
-        removeButton.onclick = function() {
-          removeItem(this);
-        };
-        removeButton.innerHTML = '<i class="fas fa-times"></i>';
-        listItem.appendChild(removeButton);
-      }
-      updateTotalButtonVisibility(); // Check if "Total" button should be visible
-    }
-    calculateTotalExpenses(); // Recalculate total expenses after moving the item
-  };
-
-  const removeItem = (button) => {
-    const listItem = button.parentNode;
-    listItem.remove();
-    calculateTotalExpenses(); // Recalculate total expenses after removing the item
+  <script>
+    input.focus();
     
-    updateTotalButtonVisibility(); // Check if "Total" button should be visible
-  };
-
-  const calculateTotal = () => {
-    const priceInputs = document.querySelectorAll('#output2 .price');
-    let isEmptyPrice = false;
-    priceInputs.forEach(input => {
-        if (!input.value.trim()) {
-            isEmptyPrice = true;
-            return;
-        }
-    });
-
-    if (isEmptyPrice) {
-        alert('Please enter price for all items before calculating total.');
-        return;
-    }
-
-    calculateTotalExpenses(); // Calculate and display total expenses
-};
- 
-
-const calculateTotalExpenses = () => {
-  const totalExpensesByDate = {};
-  const purchasedItems = document.querySelectorAll('#output2 li');
-  purchasedItems.forEach(item => {
-    const date = item.dataset.date;
-    const priceInput = item.querySelector('.input-group .price');
-    if (priceInput) {
-      const price = parseFloat(priceInput.value) || 0;
-      if (!totalExpensesByDate[date]) {
-        totalExpensesByDate[date] = 0;
+    const addItem = () => {
+      if (input.value) {
+        const listItem = document.createElement('li');
+        const currentDate = new Date().toISOString().split('T')[0]; // Get the current date
+        listItem.style.listStyle = 'none';
+        listItem.className = 'mb-3 d-flex justify-content-between align-items-center';
+        listItem.innerHTML = `
+          <input class="form-check-input" type="checkbox" value="${input.value}" onclick="moveToPurchasedList(this, '${currentDate}')">
+          ${input.value}
+          <div class="input-group input-group-sm ml-2" style="width: 125px;">
+            <input type="number" class="form-control quantity" placeholder="Qty">
+          </div>
+          <button class="btn btn-danger btn-sm ml-2" onclick="removeItem(this)"><i class="fas fa-times"></i></button>`;
+        
+        output1.appendChild(listItem);
+        input.value = "";
+      } else {
+        alert('Enter an item...');
       }
-      totalExpensesByDate[date] += price;
-    }
-  });
+    };
 
-  const output3 = document.getElementById('output3');
-  output3.innerHTML = ''; // Clear previous content
+    const moveToPurchasedList = (checkbox, date) => {
+      const listItem = checkbox.parentNode;
+      if (checkbox.checked) {
+        const priceInput = document.createElement('input');
+        priceInput.type = 'number';
+        priceInput.className = 'form-control price';
+        priceInput.placeholder = 'Price';
+        listItem.querySelector('.input-group').appendChild(priceInput);
+        listItem.setAttribute('data-date', date); // Store the date as a data attribute
+        output2.appendChild(listItem);
+        listItem.removeChild(listItem.querySelector('button')); // Remove the remove button from the listItem
+        updateTotalButtonVisibility(); // Check if "Total" button should be visible
+      } else {
+        const qtyInput = listItem.querySelector('.input-group .quantity');
+        const priceInput = listItem.querySelector('.input-group .price');
+        if (priceInput) {
+          priceInput.parentNode.removeChild(priceInput);
+        }
+        output1.appendChild(listItem);
+        if (!listItem.querySelector('button')) { // Add the remove button back to the listItem if it's not already there
+          const removeButton = document.createElement('button');
+          removeButton.className = 'btn btn-danger btn-sm ml-2';
+          removeButton.onclick = function() {
+            removeItem(this);
+          };
+          removeButton.innerHTML = '<i class="fas fa-times"></i>';
+          listItem.appendChild(removeButton);
+        }
+        updateTotalButtonVisibility(); // Check if "Total" button should be visible
+      }
+      calculateTotalExpenses(); // Recalculate total expenses after moving the item
+    };
 
-  // Display total expenses for each date in output3
-  for (const date in totalExpensesByDate) {
-    const listItem = document.createElement('div');
-    listItem.innerHTML = `${date.replace(/-/g, '/')} :  <span class="text-warning float-right fw-bold">₹${totalExpensesByDate[date].toFixed(2)}</span>`;
-    output3.appendChild(listItem);
-  }
+    const removeItem = (button) => {
+      const listItem = button.parentNode;
+      listItem.remove();
+      calculateTotalExpenses(); // Recalculate total expenses after removing the item
+      
+      updateTotalButtonVisibility(); // Check if "Total" button should be visible
+    };
 
-  // Store data in localStorage
-  localStorage.setItem('totalExpenses', JSON.stringify(totalExpensesByDate));
-};
+    const calculateTotal = () => {
+      const priceInputs = document.querySelectorAll('#output2 .price');
+      let isEmptyPrice = false;
+      priceInputs.forEach(input => {
+          if (!input.value.trim()) {
+              isEmptyPrice = true;
+              return;
+          }
+      });
 
-// Check if there's stored data in localStorage and display it on page load
-window.onload = () => {
-  const storedData = localStorage.getItem('totalExpenses');
-  if (storedData) {
-    const totalExpensesByDate = JSON.parse(storedData);
-    const output3 = document.getElementById('output3');
-    output3.innerHTML = ''; // Clear previous content
+      if (isEmptyPrice) {
+          alert('Please enter price for all items before calculating total.');
+          return;
+      }
 
-    for (const date in totalExpensesByDate) {
-      const listItem = document.createElement('div');
-      listItem.innerHTML = `${date.replace(/-/g, '/')} :  <span class="text-warning float-right fw-bold">₹${totalExpensesByDate[date].toFixed(2)}</span>`;
-      output3.appendChild(listItem);
-    }
-  }
-};
+      calculateTotalExpenses(); // Calculate and display total expenses
+    };
 
+    const calculateTotalExpenses = () => {
+      const totalExpensesByDate = {};
+      const purchasedItems = document.querySelectorAll('#output2 li');
+      purchasedItems.forEach(item => {
+        const date = item.dataset.date;
+        const priceInput = item.querySelector('.input-group .price');
+        if (priceInput) {
+          const price = parseFloat(priceInput.value) || 0; // Convert to float, default to 0 if empty
+          if (!totalExpensesByDate[date]) {
+            totalExpensesByDate[date] = 0;
+          }
+          totalExpensesByDate[date] += price;
+        }
+      });
 
+      const output3 = document.getElementById('output3');
+      output3.innerHTML = ''; // Clear previous content
 
-  const updateTotalButtonVisibility = () => {
-    const totalButton = document.querySelector('.total-btn');
-    if (output2.children.length > 0) {
-      totalButton.style.display = 'block'; // Show the "Total" button if there are items in output2
-    } else {
-      totalButton.style.display = 'none'; // Hide the "Total" button if output2 is empty
-    }
-  };
+      // Display total expenses for each date in output3
+      for (const date in totalExpensesByDate) {
+        const listItem = document.createElement('div');
+        listItem.innerHTML = `${date.replace(/-/g, '/')} :  <span class="text-warning float-right fw-bold">₹${totalExpensesByDate[date].toFixed(2)}</span>`;
+        output3.appendChild(listItem);
+      }
 
-</script>
+      // Store data in localStorage
+      localStorage.setItem('totalExpenses', JSON.stringify(totalExpensesByDate));
+    };
+
+    // Check if there's stored data in localStorage and display it on page load
+    window.onload = () => {
+      const storedData = localStorage.getItem('totalExpenses');
+      if (storedData) {
+        const totalExpensesByDate = JSON.parse(storedData);
+        const output3 = document.getElementById('output3');
+        output3.innerHTML = ''; // Clear previous content
+
+        for (const date in totalExpensesByDate) {
+          const listItem = document.createElement('div');
+          listItem.innerHTML = `${date.replace(/-/g, '/')} :  <span class="text-warning float-right fw-bold">₹${totalExpensesByDate[date].toFixed(2)}</span>`;
+          output3.appendChild(listItem);
+        }
+      }
+    };
+
+    const updateTotalButtonVisibility = () => {
+      const totalButton = document.querySelector('.total-btn');
+      if (output2.children.length > 0) {
+        totalButton.style.display = 'block'; // Show the "Total" button if there are items in output2
+      } else {
+        totalButton.style.display = 'none'; // Hide the "Total" button if output2 is empty
+      }
+    };
+  </script>
 </body>
 </html>
+
