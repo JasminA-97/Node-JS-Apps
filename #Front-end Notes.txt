@@ -1,5 +1,5 @@
  JAVASCRIPT - Front end Concepts
- -------------------------------
+    --------------------------------
 
     - Used to provide behavior to Web page
     - Ways to applying JS in HTML
@@ -77,6 +77,4 @@
     - API Call Using JS 
         - using XMLHTTPRequest : AJAX (Asynchrous JS & XML)
         - fetch() : returns promise
-
-
         
