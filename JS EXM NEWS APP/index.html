@@ -33,7 +33,9 @@
               throw new Error('Network response was not ok');
             }else{
               value.json().then(data => {
-              const articles = data.articles
+              const article = data.articles
+             if(article.length>0){
+              articles=article.slice(0,5)
               articles.forEach(item => {
                 output.innerHTML += `
                   <div class="col-lg-4 mt-4">
@@ -49,6 +51,10 @@
                   </div>
                 `;
               });
+
+             }else{
+              alert("no data!!!")
+             }
             
           })
             }
