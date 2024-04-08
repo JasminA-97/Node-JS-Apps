@@ -9,9 +9,11 @@ fposy=200;
 snaketail=[];
 snakesize=1;
 score=0;
+fruitsEaten = 0; 
 gstat = "<span class=text-primary>Ready...</span>";
 stat=document.getElementById('gstatus');
-let gameLevel = 'easy'; // Default game level
+gameLevel = 'easy'; // Default game level
+
 
 
 // Function to set the game level
@@ -51,6 +53,7 @@ function resetGame() {
     snaketail = [];
     snakesize = 1;
     score = 0;
+    fruitsEaten = 0; 
     gstat = "<span class='text-primary'>Ready...</span>";
     stat.innerHTML = gstat;
 }
@@ -103,13 +106,10 @@ maingame=()=> {
         clearInterval(game);
         gstat = "<span class=text-danger>Game Over</span>";
         stat.innerHTML=gstat;
+
         // Display Game Over Modal
-        let modalScoreElement = document.getElementById('modalScore');
-        modalScoreElement.textContent = score;
-
-        let gameOverImageElement = document.getElementById('gameOverImage');
-        gameOverImageElement.src = 'game_over_image.jpg'; // Set game over image
-
+        modalScore.textContent = score;
+        eaten.textContent=fruitsEaten; 
         let gameOverModal = new bootstrap.Modal(document.getElementById('gameOverModal'));
         gameOverModal.show();
 
@@ -126,6 +126,7 @@ maingame=()=> {
     if(sPosx==fposx && sPosy==fposy){
         snakesize++;
         score+=5;
+        fruitsEaten++;
         console.log(fposx=Math.floor(Math.random()*20)*40);
         console.log(fposy=Math.floor(Math.random()*20)*20);
     }
@@ -150,7 +151,7 @@ inputControl=(e)=>{
                 break;          
             }
     if ([37, 38, 39, 40].includes(e.keyCode)) {
-        gstat = "<span class='text-success'>Go...</span>";
+        gstat = "<span class='text-warning'>Go...</span>";
         stat.innerHTML = gstat;
     }
 }
